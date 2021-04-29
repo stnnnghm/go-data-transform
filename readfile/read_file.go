@@ -19,6 +19,7 @@ func ReadFromFile(fileName string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
+	fmt.Printf("Successful read from file %s\n", fileName)
 
 	return data, nil
 }
