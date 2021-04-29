@@ -5,24 +5,25 @@ import (
 	"fmt"
 )
 
-type User struct {
-	Id         int    `json:"id"`
-	Name       string `json:"name"`
-	Occupation string `json:"occupation"`
-}
-
-func EncodeUser(data []byte) (User, error) {
+func EncodeUser(u User) ([]byte, error) {
 	fmt.Println("In EncodeUser")
-	var u1 User
 
-	err := json.Unmarshal(data, &u1)
+	d, err := json.Marshal(u)
 	if err != nil {
-		return u1, err
+		return nil, err
 	}
 
-	fmt.Printf("Struct u1: %v\n", u1)
-	fmt.Printf("ID: %v\nName: %v\nOccupation: %v\n",
-		u1.Id, u1.Name, u1.Occupation)
+	fmt.Printf("Encoded: %v\nOutput: %v\n", u, string(d))
+	return d, nil
+}
 
-	return u1, nil
+func EncodeUsers(users []User) ([]byte, error) {
+	fmt.Println("In EncodeUsers")
+
+	d, err := json.Marshal(users)
+	if err != nil {
+		return nil, err
+	}
+
+	return d, nil
 }
