@@ -29,7 +29,7 @@ func DecodeUsers(data []byte) ([]User, error) {
 
 	for i := range u {
 		fmt.Printf("User %d:\n\t ID: %v\n\t Name: %v\n\t Occupation: %v\n",
-			i, u[i].Id, u[i].Name, u[i].Occupation)
+			u[i].Id, u[i].Id, u[i].Name, u[i].Occupation)
 	}
 
 	return u, nil

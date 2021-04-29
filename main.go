@@ -5,6 +5,7 @@ import (
 	"log"
 
 	e "github.com/stnnnghm/go-data-transform/encode"
+	f "github.com/stnnnghm/go-data-transform/readfile"
 )
 
 func main() {
@@ -43,10 +44,21 @@ func main() {
 		log.Fatal(err)
 	}
 
+	fuser, err := f.ReadFromFile("sample_data.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fileUser, err := e.DecodeUsers(fuser)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	fmt.Println("Main User: ", user)
 	fmt.Printf("Main Users: %v\n", users)
 	fmt.Println("Main userByte: ", string(userByte))
 	fmt.Printf("Main userBytes: %v\n", string(userBytes))
+	fmt.Println("Main fileUser: ", fileUser)
 
 	fmt.Println("Exiting...")
 }
