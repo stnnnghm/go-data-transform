@@ -19,7 +19,7 @@ func main() {
 
 	user, err := e.DecodeUser(d)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("%v", err)
 	}
 
 	d2 := []byte(`
@@ -31,27 +31,27 @@ func main() {
 
 	users, err := e.DecodeUsers(d2)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("%v", err)
 	}
 
 	userByte, err := e.EncodeUser(user)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("%v", err)
 	}
 
 	userBytes, err := e.EncodeUsers(users)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("%v", err)
 	}
 
-	fuser, err := f.ReadFromFile("sample_data.json")
+	fUser, err := f.ReadFromFile("sample_data.json")
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("%v", err)
 	}
 
-	fileUser, err := e.DecodeUsers(fuser)
+	fileUser, err := e.DecodeUsers(fUser)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("%v", err)
 	}
 
 	fmt.Println("Main User: ", user)
